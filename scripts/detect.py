@@ -27,7 +27,7 @@ def main() -> int:
                         help="Confidence floor (overrides the config)")
     parser.add_argument("--tiling", action="store_true",
                         help="Enable tiled inference. Measured to hurt badly on "
-                             "this data (F1 0.023 vs 0.861) — verify on yours first.")
+                             "this data (F1 0.023 vs 0.861) - verify on yours first.")
     parser.add_argument("--all-classes", action="store_true",
                         help="Annotate MP/NT/WF too, not just the target")
     args = parser.parse_args()

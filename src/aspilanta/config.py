@@ -185,7 +185,7 @@ class ClassScheme:
     """The two label schemes used across the project.
 
     ``base`` is the three data-rich classes from the Yellow Sticky Traps
-    dataset. ``full`` adds Aspilanta as class 3 — this is the scheme the
+    dataset. ``full`` adds Aspilanta as class 3 - this is the scheme the
     proposed detector is trained and evaluated in.
 
     The generator writes its own two-class scheme internally
@@ -230,7 +230,7 @@ class ClassScheme:
 class TrainingConfig:
     """Stage-1 recipe: the three-class base detector.
 
-    YOLOv8s rather than YOLOv8n — the architecture ablation in Section 6.6
+    YOLOv8s rather than YOLOv8n - the architecture ablation in Section 6.6
     measures the difference.
     """
 
@@ -417,7 +417,7 @@ class DeploymentConfig:
     Tiling loses badly because tile crops are out of distribution relative to
     how the detector was trained. The CLIP filter buys +0.5pp precision for
     -12.6pp recall. Section 11.3 recovers some of the CLIP idea by applying it
-    selectively — only to detections below a trust threshold.
+    selectively - only to detections below a trust threshold.
     """
 
     conf: float = 0.25            # detection confidence floor

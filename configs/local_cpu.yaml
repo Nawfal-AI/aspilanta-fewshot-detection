@@ -1,4 +1,4 @@
-# Small local run without a GPU — for verifying the pipeline works end to end
+# Small local run without a GPU - for verifying the pipeline works end to end
 # before committing GPU time. The numbers this produces are not meaningful.
 
 paths:

@@ -2,7 +2,7 @@
 #
 # Kaggle wipes /kaggle/working on session timeout, so anything you want to keep
 # must be saved to an output dataset before the session ends. The twelve-hour
-# limit also means the nine-ablation sweep will not finish in one go — that is
+# limit also means the nine-ablation sweep will not finish in one go - that is
 # why run_ablations.py reuses completed runs by default.
 
 paths:

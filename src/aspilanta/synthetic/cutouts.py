@@ -273,7 +273,7 @@ def extract_folder(in_dir: str | Path, out_dir: str | Path,
         method: ``"rembg"`` (better mattes, slower) or ``"grabcut"``.
         force: re-extract even when the output already exists.
         min_coverage: discard results that kept less than this fraction of
-            pixels — those are failures, not thin insects.
+            pixels - those are failures, not thin insects.
 
     Already-extracted files are reused unless ``force`` is set, which matters
     on a session-limited platform where a run may be interrupted and resumed.

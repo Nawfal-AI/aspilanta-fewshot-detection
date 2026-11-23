@@ -9,12 +9,12 @@ The experiment design, the nine ablations, and how to reproduce each.
 | # | Model | Trained on | Evaluated on | Purpose |
 |---|---|---|---|---|
 | 1 | 3-class base | Yellow Sticky Traps only | 3-class split | Establishes the domain is learnable |
-| 2 | 3-class base | *(no training — reuses Exp 1)* | Synthetic trap images with *Aspilanta* | Zero-shot diagnostic |
+| 2 | 3-class base | *(no training - reuses Exp 1)* | Synthetic trap images with *Aspilanta* | Zero-shot diagnostic |
 | 3 | 4-class proposed | Original + real + synthetic | 4-class target-domain split | The method |
 
 **Experiment 2 needs explaining.** It runs the three-class model over images
 that contain the target species. The model has no output for that class, so
-every detection is wrong by construction — it produced 8,299 detections, none
+every detection is wrong by construction - it produced 8,299 detections, none
 correct. This is not a failed experiment; it is the control that turns
 "there is a domain gap" from an assumption into a measurement.
 
@@ -36,7 +36,7 @@ python scripts/evaluate.py --weights work/runs/detect/solution_4class_detector/w
 Each removes or changes exactly one component. Everything else is held at the
 proposed values, so a difference in the result is attributable to the change.
 
-### Group 1 — Copy-paste compositing (data-oriented)
+### Group 1 - Copy-paste compositing (data-oriented)
 
 | Ablation | Question |
 |---|---|
@@ -47,17 +47,17 @@ proposed values, so a difference in the result is attributable to the change.
 
 These require regenerating synthetic data with the relevant switch off.
 
-### Group 2 — Transfer learning (stage 1)
+### Group 2 - Transfer learning (stage 1)
 
 | Ablation | Question |
 |---|---|
 | `scratch_init` | How much does ImageNet pretraining contribute? |
 | `yolov8n_arch` | Is YOLOv8s worth its extra capacity over YOLOv8n? |
 
-Evaluated on the **three-class** validation set, not the four-class one — a
+Evaluated on the **three-class** validation set, not the four-class one - a
 three-class model has no target-class output to score.
 
-### Group 3 — Fine-tuning recipe (stage 2)
+### Group 3 - Fine-tuning recipe (stage 2)
 
 | Ablation | Question |
 |---|---|
@@ -119,7 +119,7 @@ than the species.
 
 That comparison is also **threshold-free**. An earlier version scored both
 embeddings at a mean-similarity threshold and got recall pinned at 1.000 for
-every configuration — the numbers measured the threshold rule, not the
+every configuration - the numbers measured the threshold rule, not the
 embedding. Average precision, ROC-AUC and best-achievable-F1 measure whether
 the embedding separates the classes at all. Under class imbalance, read the
 AP lift over prevalence, not the raw AP.

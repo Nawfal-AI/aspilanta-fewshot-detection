@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Train the detector — either stage, or both in sequence.
+"""Train the detector - either stage, or both in sequence.
 
     python scripts/train.py --stage base       # 3-class foundation
     python scripts/train.py --stage solution   # 4-class proposed method
@@ -7,7 +7,7 @@
 
 Stage 2 fine-tunes from stage 1's best checkpoint with the backbone trainable.
 That is the proposed configuration and it contradicts the design this project
-started from — see docs/results.md for the ablation evidence and the caveat
+started from - see docs/results.md for the ablation evidence and the caveat
 that it was selected on evaluation data.
 """
 

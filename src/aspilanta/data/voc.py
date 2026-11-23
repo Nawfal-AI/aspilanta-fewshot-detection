@@ -2,7 +2,7 @@
 
 The dataset ships one XML per trap card with absolute-pixel bounding boxes;
 Ultralytics wants normalised centre-form boxes in a plain text file. Notebook
-cells 12, 15 and 19 did this three times with slightly different code — this
+cells 12, 15 and 19 did this three times with slightly different code - this
 is the single reconciled version.
 """
 
@@ -41,7 +41,7 @@ def convert_voc_to_yolo(xml_file: str | Path, classes: Sequence[str],
     """Convert one VOC XML to a YOLO label file. Returns the number of boxes.
 
     Objects whose class name is not in ``classes`` are skipped rather than
-    guessed at — the source dataset contains occasional stray labels.
+    guessed at - the source dataset contains occasional stray labels.
     """
     boxes, names, (width, height) = parse_voc_boxes(xml_file)
 

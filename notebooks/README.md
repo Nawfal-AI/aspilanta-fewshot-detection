@@ -1,7 +1,7 @@
 # Notebooks
 
 The original research notebooks, kept as the record of how the work was actually
-done. The package in `src/aspilanta/` is the maintained version — see
+done. The package in `src/aspilanta/` is the maintained version - see
 [`docs/code_map.md`](../docs/code_map.md) for which cell became which module.
 
 ## Files
@@ -18,7 +18,7 @@ versions predate the ablation studies, the cross-family baselines, and the
 Section 11 corrections. They are here for provenance, not for use.
 
 Outputs are kept in the canonical notebook because they *are* the project's
-evidence — the training curves, confusion matrices and result tables were read
+evidence - the training curves, confusion matrices and result tables were read
 off those cells. Outputs are stripped from the archives, which took them from
 roughly 11 MB each to under 450 KB.
 
@@ -26,7 +26,7 @@ roughly 11 MB each to under 450 KB.
 
 The upload contained five notebooks, but two of them
 (`full-runall__3_.ipynb` and `full-runall__4_.ipynb`) were **byte-identical in
-code** — they differed only in stored outputs. Only one is kept here, as
+code** - they differed only in stored outputs. Only one is kept here, as
 `archive/01-full-runall.ipynb`.
 
 ## Structure of the canonical notebook

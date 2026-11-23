@@ -1,6 +1,6 @@
 """Reading, remapping and copying YOLO-format datasets.
 
-These are the helpers the notebook defined in "CELL 3 — Utility functions" and
+These are the helpers the notebook defined in "CELL 3 - Utility functions" and
 then redefined in Section 11.1 with ``drop_class_ids`` support. Only the later,
 corrected versions are kept here: the earlier ones remapped the generator's
 distractor class into a real class id, which is exactly the labelling defect
@@ -202,7 +202,7 @@ def copy_one_image_and_label(img_path: str | Path,
     """Copy one image and its remapped label into a destination split.
 
     ``prefix`` keeps provenance visible in the filename (``real_train_``,
-    ``synth_val_``, ``orig_train_``). Several later stages rely on it —
+    ``synth_val_``, ``orig_train_``). Several later stages rely on it -
     :func:`strip_distractor_labels` identifies synthetic files by prefix, and
     the test-split carve in Section 11.2 stratifies on it.
 
@@ -293,7 +293,7 @@ def class_histogram(label_dir: str | Path,
                     names: Sequence[str] | None = None) -> dict:
     """Count boxes per class id in a label directory.
 
-    Worth running after every dataset build — it is how the Section 11.1
+    Worth running after every dataset build - it is how the Section 11.1
     labelling defect became visible in the first place.
     """
     counts: Counter[int] = Counter()

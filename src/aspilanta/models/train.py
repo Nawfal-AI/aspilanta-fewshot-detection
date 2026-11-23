@@ -37,8 +37,8 @@ def find_weights(run_names: Sequence[str], search_roots: Sequence[Path],
     """Locate a ``best.pt`` for any of ``run_names``, preferring earlier names.
 
     Order matters more than it looks. The proposed model is archived under
-    several historical names, and the *frozen* configuration — now only an
-    ablation — sits under ``exp3_4class_synthetic_finetuned``. Picking that one
+    several historical names, and the *frozen* configuration - now only an
+    ablation - sits under ``exp3_4class_synthetic_finetuned``. Picking that one
     by accident silently costs AP@50 0.981 to 0.906, with no error to notice.
     Pass the proposed names first.
     """
@@ -99,7 +99,7 @@ def train_base_detector(data_yaml: str | Path, paths: Paths,
     device = resolve_device(device)
 
     print("=" * 70)
-    print("STAGE 1 — base three-class detector")
+    print("STAGE 1 - base three-class detector")
     print(f"  init={init_weights or config.model}  data={data_yaml}")
     print("=" * 70)
 
@@ -113,7 +113,7 @@ def train_solution(data_yaml: str | Path, init_weights: str | Path, paths: Paths
                    run_name: str | None = None) -> Path:
     """Stage 2: the proposed four-class detector.
 
-    ``freeze=0`` — the backbone stays trainable. See
+    ``freeze=0`` - the backbone stays trainable. See
     :class:`~aspilanta.config.SolutionConfig` for the ablation evidence behind
     that choice and for the caveat about having selected it on evaluation data.
 
@@ -126,7 +126,7 @@ def train_solution(data_yaml: str | Path, init_weights: str | Path, paths: Paths
     device = resolve_device(device)
 
     print("=" * 70)
-    print("STAGE 2 — proposed four-class detector")
+    print("STAGE 2 - proposed four-class detector")
     print(f"  init={init_weights}")
     print(f"  backbone={'TRAINABLE' if config.freeze == 0 else f'frozen to {config.freeze}'}")
     print(f"  epochs={config.epochs}  lr0={config.lr0}  copy_paste={config.copy_paste}")
@@ -169,7 +169,7 @@ def tfa_freeze_callback(trainer) -> None:
     This is the YOLOv8 equivalent of TFA's two-stage recipe (Wang et al.,
     2020), where only the novel-class classifier is trained on the few-shot
     data. Registered on ``on_train_start`` so it runs *after* Ultralytics'
-    own freeze-by-index logic and can override it — index-based freezing
+    own freeze-by-index logic and can override it - index-based freezing
     cannot express "the cls branch of the head but not the box branch".
 
     ``cv2`` is the box-regression branch of ``Detect``, ``cv3`` the
@@ -185,7 +185,7 @@ def tfa_freeze_callback(trainer) -> None:
 
     if not hasattr(head, "cv3"):
         raise AttributeError(
-            "Detect head has no 'cv3' attribute — Ultralytics internals may have "
+            "Detect head has no 'cv3' attribute - Ultralytics internals may have "
             "changed. Inspect trainer.model.model[-1] to find the classification "
             "branch and update this callback.")
 
@@ -207,13 +207,13 @@ def train_tfa_baseline(data_yaml: str | Path, init_weights: str | Path,
 
     Trained on the same data with the same schedule as the proposed solution,
     so the only difference is what is allowed to learn. ``freeze=[]`` is passed
-    to Ultralytics deliberately — all freezing is handled by the callback.
+    to Ultralytics deliberately - all freezing is handled by the callback.
     """
     config = config or SolutionConfig()
     device = resolve_device(device)
 
     print("=" * 70)
-    print("BASELINE — TFA-style frozen detector (classification head only)")
+    print("BASELINE - TFA-style frozen detector (classification head only)")
     print(f"  data={data_yaml}  init={init_weights}")
     print("=" * 70)
 

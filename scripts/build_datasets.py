@@ -7,8 +7,8 @@ Builds exp1 (3-class base), exp2 (zero-shot eval set), exp3 (4-class merged
 training set), and the common target-domain validation set, then prints a
 class histogram for each.
 
-Read those histograms. The Section 11.1 labelling defect — generator distractor
-boxes being remapped into a real class instead of dropped — showed up as an
+Read those histograms. The Section 11.1 labelling defect - generator distractor
+boxes being remapped into a real class instead of dropped - showed up as an
 inflated MP or NT count and nothing else.
 """
 

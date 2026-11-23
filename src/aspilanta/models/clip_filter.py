@@ -1,4 +1,4 @@
-"""Frozen-CLIP few-shot prototype filter — the algorithm-oriented component.
+"""Frozen-CLIP few-shot prototype filter - the algorithm-oriented component.
 
 The idea: embed a handful of real Aspilanta crops with a frozen CLIP encoder,
 average them into a prototype, and re-score each candidate detection by cosine
@@ -8,13 +8,13 @@ entirely through the support set.
 Two things about this module are worth reading before using it.
 
 **It is off by default, on evidence.** On ``generated_dataset_v7`` the filter
-moves precision 0.931 to 0.936 while recall falls 0.801 to 0.675 — F1 drops
+moves precision 0.931 to 0.936 while recall falls 0.801 to 0.675 - F1 drops
 from 0.861 to 0.785. :func:`selective_clip_filter` recovers part of the idea by
 consulting CLIP only for detections the detector itself is unsure about.
 
 **The notebook version had a real bug, fixed here.** The original read
 ``clip_model`` and ``support_images_all`` straight out of ``globals()`` and
-silently returned its input unchanged when they were missing — which was the
+silently returned its input unchanged when they were missing - which was the
 case after any kernel restart. Every "CLIP-filtered" number reported before
 that fix was identical to the unfiltered baseline, because the filter never
 ran. The class below owns its state, so it either works or raises.
@@ -145,7 +145,7 @@ def build_support_crops(image_paths: Sequence[Path], label_roots: Iterable[Path]
     """Build the support set from real Aspilanta training images.
 
     One crop per image, taken from its first box. These are the only real
-    examples the filter ever sees, so they must come from the training pool —
+    examples the filter ever sees, so they must come from the training pool -
     drawing them from validation images would leak.
     """
     from PIL import Image
@@ -188,7 +188,7 @@ class ClipPrototypeFilter:
         k: how many support crops to average into the prototype.
         threshold: cosine similarity floor. When None, it is calibrated from
             the support set itself as ``mean - std`` of support-to-prototype
-            similarity — deliberately conservative, and reproducible, unlike a
+            similarity - deliberately conservative, and reproducible, unlike a
             hand-picked constant.
     """
 
@@ -239,7 +239,7 @@ class ClipPrototypeFilter:
                threshold: float | None = None):
         """Drop every detection below the similarity threshold.
 
-        Measured to cost more recall than it buys precision on this data — see
+        Measured to cost more recall than it buys precision on this data - see
         the module docstring. Prefer :func:`selective_clip_filter`.
         """
         if len(boxes) == 0:
@@ -260,7 +260,7 @@ class ClipPrototypeFilter:
         second-guesses confident, correct detections whose crops happen to sit
         a little away from the prototype in CLIP space. Detections the model is
         already sure about are kept unconditionally, and CLIP arbitrates only
-        the marginal ones — which is where false positives actually
+        the marginal ones - which is where false positives actually
         concentrate.
         """
         if len(boxes) == 0:

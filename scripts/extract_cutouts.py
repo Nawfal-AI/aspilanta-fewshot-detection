@@ -63,7 +63,7 @@ def main() -> int:
                         config.paths.outputs / "distractor_cutouts_grid.png",
                         n=min(48, len(distractors)), title="Distractor cutouts")
     else:
-        print("\nNo distractor source given — the generator will run without them, "
+        print("\nNo distractor source given - the generator will run without them, "
               "which is the 'no_distractors' ablation rather than the method.")
 
     return 0

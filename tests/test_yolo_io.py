@@ -2,7 +2,7 @@
 
 The distractor-drop tests cover the Section 11.1 defect specifically. That bug
 survived a full experimental campaign because a remapped distractor label is
-indistinguishable from a real one once written — nothing crashes, the numbers
+indistinguishable from a real one once written - nothing crashes, the numbers
 just quietly shift.
 """
 

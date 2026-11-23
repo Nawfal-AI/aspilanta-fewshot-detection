@@ -1,7 +1,7 @@
 """The nine ablations.
 
 Each removes or changes exactly one component and re-runs the affected stage.
-Three of the nine contradict the design they were meant to confirm — that is
+Three of the nine contradict the design they were meant to confirm - that is
 reported rather than quietly dropped, and one of them (backbone freezing)
 changed the proposed method.
 
@@ -11,7 +11,7 @@ and this determines how each is scored:
 * **fine-tuning-recipe** ablations change stage 2 and are evaluated on the
   four-class target-domain validation set;
 * **transfer-learning-recipe** ablations change stage 1 and are evaluated on
-  the three-class base validation set — scoring them on the four-class set
+  the three-class base validation set - scoring them on the four-class set
   would be meaningless, since a three-class model has no target-class output.
 
 A note on archived run names. These ablations were first run when the *frozen*

@@ -1,4 +1,4 @@
-"""Prototypical network baseline — the algorithm-oriented comparison.
+"""Prototypical network baseline - the algorithm-oriented comparison.
 
 Trains a task-specific embedding with episodic prototypical loss (Snell et al.,
 2017) on the project's own crops, and compares it head to head against the
@@ -6,7 +6,7 @@ frozen CLIP embedding on identical data.
 
 The comparison is threshold-free, and that is the important design decision.
 An earlier version scored both embeddings at a mean-similarity threshold and
-got recall pinned at 1.000 for every configuration — the numbers were
+got recall pinned at 1.000 for every configuration - the numbers were
 measuring the threshold rule, not the embedding. Ranking metrics (average
 precision, ROC-AUC, best achievable F1 over all thresholds) measure whether
 the embedding separates the classes at all, which is the actual question.
@@ -35,7 +35,7 @@ class ProtoEmbedNet:
     """ResNet18 backbone with a linear head, L2-normalised output.
 
     Wrapped in a plain class rather than exposed as a bare ``nn.Module`` so
-    importing this file does not require torch — the rest of the package is
+    importing this file does not require torch - the rest of the package is
     usable without it.
     """
 
@@ -64,7 +64,7 @@ class ProtoTrainer:
         train_crops: PIL crops from the **train** split only.
         train_labels: 1 for target, 0 otherwise.
         image_size: crops are resized to this square. 96 px is a deliberate
-            compromise — the objects are tiny, so upsampling much beyond their
+            compromise - the objects are tiny, so upsampling much beyond their
             native resolution buys nothing but compute.
     """
 

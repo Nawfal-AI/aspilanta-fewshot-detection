@@ -76,7 +76,7 @@ deployment:
   conf: 0.25
   iou: 0.45
   deploy_conf: 0.40
-  # Both off on measured evidence — see docs/results.md.
+  # Both off on measured evidence - see docs/results.md.
   # Tiling: F1 0.023 vs 0.861 single-pass.
   # Blanket CLIP filtering: F1 0.785 vs 0.861.
   use_tiling: false

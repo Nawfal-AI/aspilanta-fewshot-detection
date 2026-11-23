@@ -5,7 +5,7 @@
 
 Two evaluation modes:
 
-``--mode ap``        Ultralytics validation — mAP and per-class AP. This is the
+``--mode ap``        Ultralytics validation - mAP and per-class AP. This is the
                      number reported as the headline result.
 ``--mode pipeline``  End-to-end precision/recall/F1/count-MAE for the deployed
                      pipeline, including tiling and CLIP variants.

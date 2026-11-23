@@ -1,4 +1,4 @@
-"""OWL-ViT baseline — the foundation-model comparison.
+"""OWL-ViT baseline - the foundation-model comparison.
 
 Answers the obvious objection to this whole project: why build a synthetic
 data pipeline when open-vocabulary detectors claim to find arbitrary objects
@@ -6,8 +6,8 @@ from a text prompt or a single example?
 
 Two variants are evaluated on the same validation set as the proposed method:
 
-* **zero-shot text** — prompted with generic insect vocabulary, no examples;
-* **image-guided few-shot** — prompted with K real Aspilanta exemplar crops.
+* **zero-shot text** - prompted with generic insect vocabulary, no examples;
+* **image-guided few-shot** - prompted with K real Aspilanta exemplar crops.
 
 Both underperform the proposed pipeline by a wide margin. That is not a
 criticism of OWL-ViT: a 5 mm moth occupying a few dozen pixels on a cluttered
@@ -48,7 +48,7 @@ def collect_exemplars(dataset_root: str | Path, k: int, target_class_id: int = 3
     baseline is scored partly on its own prompts.
 
     Both splits are searched because the target-domain builder can leave very
-    few real images in train — with eleven real photographs in total, insisting
+    few real images in train - with eleven real photographs in total, insisting
     on train-only exemplars can yield zero.
     """
     import cv2

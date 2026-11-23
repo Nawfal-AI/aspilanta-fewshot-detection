@@ -68,7 +68,7 @@ def extract_clean_pad(bg: np.ndarray, min_frac: float = 0.05,
     """Crop the pad and inpaint away any insects already stuck to it.
 
     Background photographs are real trap cards, so most already carry a few
-    insects. Leaving them in would create unlabelled positives — the composite
+    insects. Leaving them in would create unlabelled positives - the composite
     would contain insects with no corresponding ground-truth box, teaching the
     detector to suppress exactly what it is meant to find.
 

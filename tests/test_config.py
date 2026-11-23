@@ -19,7 +19,7 @@ class TestClassScheme:
     def test_distractors_are_dropped_not_mapped(self):
         """The generator's distractor id must never appear in the class map.
 
-        If it did, it would become a real class — the Section 11.1 defect.
+        If it did, it would become a real class - the Section 11.1 defect.
         """
         scheme = ClassScheme()
         assert scheme.generator_distractor_id in scheme.synthetic_drop_ids

@@ -3,7 +3,7 @@
 This is the data-oriented component of the method: 44 real Aspilanta cutouts
 become 2,000 composite trap images containing 9,211 labelled instances.
 
-The notebook carried two near-identical copies of this code — the main
+The notebook carried two near-identical copies of this code - the main
 generator (cell 41) and a "self-contained variant generator" for the ablations
 (cell 113). They are one function here, parameterised by
 :class:`~aspilanta.config.GeneratorConfig`, so the ablation variants are
@@ -208,7 +208,7 @@ def generate_dataset(aspilanta_cutouts: Sequence[str | Path],
     distractors = (load_bgra_images(distractor_cutouts, "Distractors")
                    if config.use_distractors else [])
     if not aspilanta:
-        raise RuntimeError("No Aspilanta cutouts loaded — run cutout extraction first.")
+        raise RuntimeError("No Aspilanta cutouts loaded - run cutout extraction first.")
     if config.use_distractors and not distractors:
         print("WARNING: no distractor cutouts found; distractors will be skipped.")
 
@@ -324,7 +324,7 @@ def _write_manifest(output_dir: Path, background_paths: Sequence[Path],
     """Write ``dataset.yaml`` and ``stats.json``.
 
     The mean instance size is back-converted to millimetres so the dataset
-    carries a human-checkable record of its own physical calibration — if that
+    carries a human-checkable record of its own physical calibration - if that
     number drifts away from ``insect_mean_mm``, pad detection has gone wrong
     on a substantial share of the backgrounds.
     """

@@ -17,7 +17,7 @@ dataset                      purpose
 ===========================  =============================================
 
 Every synthetic copy passes ``drop_class_ids`` so the generator's eu_moth
-distractors are removed rather than remapped — see Section 11.1 and the note
+distractors are removed rather than remapped - see Section 11.1 and the note
 in :func:`aspilanta.data.yolo_io.remap_label_lines`.
 """
 
@@ -49,7 +49,7 @@ class DatasetSources:
     """Resolved locations and image lists the builders operate on.
 
     Splitting the real and synthetic image pools once, here, means every
-    downstream dataset sees the same partition — which is what makes the
+    downstream dataset sees the same partition - which is what makes the
     cross-experiment comparison in Section 4.3 fair.
     """
 
@@ -138,7 +138,7 @@ def build_exp2_zeroshot(sources: DatasetSources, paths: Paths) -> Path:
     Aspilanta, to record what it predicts for a species it was never trained
     on. Labels keep the generator's own numbering (0 = Aspilanta) and the YAML
     declares one class, because the model being evaluated has no slot for the
-    target class at all — the point is to show the failure, not to score it.
+    target class at all - the point is to show the failure, not to score it.
 
     Ultralytics still insists on a train split, so one placeholder image is
     copied across.
@@ -174,14 +174,14 @@ def build_exp3(sources: DatasetSources, paths: Paths,
                synthetic_root_override: Path | None = None,
                synth_train_override: Sequence[Path] | None = None,
                synth_val_override: Sequence[Path] | None = None) -> Path:
-    """Four-class merged dataset — what the proposed solution trains on.
+    """Four-class merged dataset - what the proposed solution trains on.
 
     Three sources are merged, each with a different label treatment:
 
-    * original three classes — ids 0/1/2 pass through unchanged;
-    * real Aspilanta — ``force_class_id`` overrides whatever the source labels
+    * original three classes - ids 0/1/2 pass through unchanged;
+    * real Aspilanta - ``force_class_id`` overrides whatever the source labels
       say, because those files carry single-class numbering;
-    * synthetic — generator id 0 maps to the target id, and id 1 (the eu_moth
+    * synthetic - generator id 0 maps to the target id, and id 1 (the eu_moth
       distractors) is dropped.
 
     The override arguments exist so the ablation runner can swap in a variant
@@ -243,7 +243,7 @@ def build_target_domain_val(sources: DatasetSources, paths: Paths,
 
     All three experiments are scored here so the numbers are comparable.
     Experiment 1 is a three-class model evaluated against a four-class set and
-    will score exactly zero on Aspilanta — that is the correct and expected
+    will score exactly zero on Aspilanta - that is the correct and expected
     result, not a bug, and it is the whole point of the zero-shot diagnostic.
     """
     root = safe_clear_dir(paths.target_domain_val)

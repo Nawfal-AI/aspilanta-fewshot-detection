@@ -1,4 +1,4 @@
-# Core — everything needed to train and run the detector.
+# Core - everything needed to train and run the detector.
 # Optional components (CLIP, rembg matting, dev tools) are in
 # requirements-optional.txt, or install extras via `pip install -e ".[all]"`.
 

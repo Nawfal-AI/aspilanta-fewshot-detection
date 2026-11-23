@@ -1,7 +1,7 @@
 # Results
 
 All numbers are from the project's evaluation runs. The negative and contradictory results are
-here too — that is the point of the document.
+here too - that is the point of the document.
 
 ---
 
@@ -9,7 +9,7 @@ here too — that is the point of the document.
 
 | Model | Validation set | mAP@50 | mAP@50-95 | AP<sub>Asp</sub>@50 | AP<sub>Asp</sub>@50-95 |
 |---|---|---|---|---|---|
-| Stage 1 (3-class base) | Three-class split | 0.868 | 0.378 | — | — |
+| Stage 1 (3-class base) | Three-class split | 0.868 | 0.378 | - | - |
 | **Stage 2 (proposed)** | Mixed target-domain | **0.981** | **0.827** | **0.981** | **0.827** |
 | Stage 2 (proposed) | Real-only subset (n=11) | 0.995 | 0.609 | 0.995 | 0.609 |
 | Stage 2-F (frozen, ablation) | Mixed target-domain | 0.453 | 0.258 | 0.906 | 0.516 |
@@ -26,7 +26,7 @@ fine-tuning rather than being forgotten:
 
 **Zero-shot diagnostic.** The three-class base detector produced 8,299
 detections on trap images containing *Aspilanta*, none of them correct by
-construction — the model has no output for the class. The domain gap is
+construction - the model has no output for the class. The domain gap is
 measured, not assumed.
 
 ---
@@ -84,13 +84,13 @@ re-scoring step.
 
 | Component | Effect on real-image AP@50 | Verdict |
 |---|---|---|
-| Pad-aware placement | **−0.269** | Strongly supported — the largest compositing effect |
+| Pad-aware placement | **−0.269** | Strongly supported - the largest compositing effect |
 | Poisson blending | −0.039 | Supported |
 | ImageNet initialisation | −0.868 (the model does not train at all) | Decisively supported |
 | YOLOv8s over YOLOv8n | −0.088 three-class mAP@50 | Supported |
-| Synthetic data | −0.015 on real images, −0.901 on the mixed set | Weakly supported — see below |
+| Synthetic data | −0.015 on real images, −0.901 on the mixed set | Weakly supported - see below |
 | YOLO copy-paste augmentation | −0.029, within noise at n=11 | **Not supported** |
-| Distractor insects | **+0.026** — removing them *improved* real-image AP | **Refuted** |
+| Distractor insects | **+0.026** - removing them *improved* real-image AP | **Refuted** |
 | Frozen backbone | Freezing costs −0.075 AP@50, −0.311 AP@50-95 | **Changed the method** |
 | Staged transfer chain | Comparable either way | **Contributes nothing measurable** |
 
@@ -105,14 +105,14 @@ less informative kind.
 | Trainable backbone | AP@50 0.981 / 0.827 | 0.995 / 0.609 |
 | Frozen backbone | AP@50 0.906 / 0.516 | 0.941 / 0.471 |
 
-Freezing is standard few-shot practice — with few novel examples a trainable
+Freezing is standard few-shot practice - with few novel examples a trainable
 backbone overfits. But by the time fine-tuning starts the generator has
 supplied 2,000 images and 9,211 instances, so the regime the freeze protects
 against no longer exists. The proposed method changed to `freeze=0`.
 
 **Stated openly:** this configuration was adopted because an ablation preferred
 it, which is selection on evaluation data. It also wins on the real-only
-subset, which shares no images or cutout provenance with training — that is
+subset, which shares no images or cutout provenance with training - that is
 supporting evidence, not a clean independent test. The held-out test split
 (Section 11.2) exists for exactly this reason.
 
@@ -120,7 +120,7 @@ supporting evidence, not a clean independent test. The held-out test split
 
 On the 11 real close-up photographs, a detector trained with **no synthetic
 data at all** scores 0.926 AP@50 against 0.941 for the configuration it was run
-against — a gap of 0.015.
+against - a gap of 0.015.
 
 On the mixed validation set the gap is 0.901, which looks like overwhelming
 evidence for synthetic data. It is not. The mixed set is mostly synthetic
@@ -139,8 +139,8 @@ of the evidence survives closer inspection.
 ### The distractor result
 
 Removing the distractor moths *improved* real-image AP by 0.026. The
-hypothesis — that distractors force the detector to discriminate rather than
-just detect "an insect" — is not supported here. Two caveats: the ablation
+hypothesis - that distractors force the detector to discriminate rather than
+just detect "an insect" - is not supported here. Two caveats: the ablation
 variants were generated at a reduced image count, and n=11 is small.
 
 ---
@@ -160,7 +160,7 @@ The package carries only the corrected version, and
 `scripts/build_datasets.py` prints a class histogram after every build so the
 same class of error is visible immediately.
 
-Two tests cover it directly — `test_drops_rather_than_remaps` and
+Two tests cover it directly - `test_drops_rather_than_remaps` and
 `test_drop_takes_precedence_over_force` in `tests/test_yolo_io.py`.
 
 ---

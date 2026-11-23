@@ -1,8 +1,8 @@
 """Detection metrics: IoU, greedy matching, and single-class ground truth.
 
-The notebook carried three near-identical copies of these functions — the main
+The notebook carried three near-identical copies of these functions - the main
 harness, an ``_s9`` suffixed set for the OWL-ViT section, and an inline version
-inside the selective-CLIP sweep — each written so its section could run
+inside the selective-CLIP sweep - each written so its section could run
 standalone. Divergence between copies is exactly how a comparison table stops
 being a comparison, so there is one implementation here.
 """
@@ -69,7 +69,7 @@ def match_detections(pred_boxes: np.ndarray, gt_boxes: np.ndarray,
     the detector returns: greedy matching gives each ground-truth box to the
     highest-scoring prediction that claims it. A second prediction on the same
     insect counts as a false positive, which is the behaviour wanted for a
-    counting application — double-counting is a real error, not a near miss.
+    counting application - double-counting is a real error, not a near miss.
     """
     matched = np.zeros(len(gt_boxes), dtype=bool)
     tp = fp = 0

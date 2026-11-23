@@ -1,13 +1,13 @@
 """Tiled inference for very large field photographs.
 
 Kept, documented, and **off by default**. On the project's own evaluation data
-tiling scores F1 0.023 against single-pass 0.861 — a catastrophic loss, not a
+tiling scores F1 0.023 against single-pass 0.861 - a catastrophic loss, not a
 marginal one. The cause is domain mismatch: the detector was trained on whole
 images resized to 640 px, so a native-resolution 640 px crop presents insects
 at an apparent scale it has never seen.
 
 It stays in the codebase because the failure is informative and because the
-underlying motivation is sound for a genuinely different input regime — a
+underlying motivation is sound for a genuinely different input regime - a
 40-megapixel photograph in which a 5 mm insect survives a resize to 640 px as
 roughly two pixels. If you enable it for such images, re-measure on your own
 data first. Do not assume it helps.
@@ -28,7 +28,7 @@ def make_tiles(img_w: int, img_h: int, tile: int = 640,
 
     Overlap exists so that no insect is lost by falling on a tile boundary.
     The right and bottom edges get an extra tile flush against the far edge
-    rather than a partial one, keeping every tile the same size — a partial
+    rather than a partial one, keeping every tile the same size - a partial
     tile would be padded or rescaled by the model and detected at a different
     effective scale from its neighbours.
     """

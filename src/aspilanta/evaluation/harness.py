@@ -86,7 +86,7 @@ def evaluate_pipeline(model, image_dir: str | Path, label_dir: str | Path,
             numbering.
 
     The two ids being separate parameters is deliberate. Conflating them
-    produces a silent recall of zero — the evaluation reads no ground truth at
+    produces a silent recall of zero - the evaluation reads no ground truth at
     all and reports it as a model failure.
     """
     import cv2
@@ -154,7 +154,7 @@ def evaluate_bucketed_by_size(model, image_dir: str | Path, label_dir: str | Pat
     """Score small and large images separately.
 
     Aggregate metrics hide scale effects. If tiling helps anywhere it should
-    help here, on the large bucket — and the fact that it does not is a much
+    help here, on the large bucket - and the fact that it does not is a much
     stronger finding than a single aggregate number would give.
     """
     import cv2

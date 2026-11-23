@@ -82,7 +82,7 @@ def color_jitter_insect(insect_bgr: np.ndarray) -> np.ndarray:
     """Randomise brightness, contrast and hue per insect.
 
     Without this, every instance in the dataset descends from one of only 44
-    cutouts and shares its exact colour statistics — a cue the detector will
+    cutouts and shares its exact colour statistics - a cue the detector will
     happily learn instead of the shape.
     """
     out = insect_bgr.astype(np.float32)
@@ -228,8 +228,8 @@ def soft_iou(box_a, box_b) -> float:
     """IoU between two ``[x1, y1, x2, y2]`` boxes.
 
     Used to reject placements that would bury one insect under another. A
-    modest overlap allowance is realistic — insects on a crowded trap do touch
-    — but heavy occlusion produces boxes whose visible content no longer
+    modest overlap allowance is realistic - insects on a crowded trap do touch
+    - but heavy occlusion produces boxes whose visible content no longer
     matches their label.
     """
     ix1, iy1 = max(box_a[0], box_b[0]), max(box_a[1], box_b[1])

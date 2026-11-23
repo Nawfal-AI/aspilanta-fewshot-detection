@@ -1,4 +1,4 @@
-"""``AspilantaDetector`` — the deliverable.
+"""``AspilantaDetector`` - the deliverable.
 
 One class, one method. Give it an image; get back an annotated image, a table
 of detections, and a count.
@@ -28,8 +28,8 @@ from ..config import ClassScheme, DeploymentConfig
 __all__ = ["AspilantaDetector", "PROPOSED_RUN_NAMES", "FROZEN_ABLATION_RUN_NAMES"]
 
 
-# Checkpoint names in preference order. The proposed model — trainable
-# backbone — is archived under several historical names. The frozen model is
+# Checkpoint names in preference order. The proposed model - trainable
+# backbone - is archived under several historical names. The frozen model is
 # now only an ablation, but its run directory has the most official-sounding
 # name of the lot, so it is listed separately and warned about: loading it by
 # accident costs AP@50 0.981 -> 0.906 with nothing to indicate anything is wrong.
@@ -57,8 +57,8 @@ class AspilantaDetector:
         classes: the label scheme, for naming boxes when the checkpoint
             carries no names.
         target_only: annotate and report the target class only. Other insects
-            are still detected — they appear in the returned DataFrame as
-            context — but they are not drawn and not counted.
+            are still detected - they appear in the returned DataFrame as
+            context - but they are not drawn and not counted.
         search_roots: where to look for a checkpoint when ``weights`` is None.
     """
 
@@ -206,7 +206,7 @@ class AspilantaDetector:
             use_tiling = self.config.use_tiling
             if not use_tiling and min(bgr.shape[:2]) > self.config.tiling_size_threshold:
                 # Large enough that tiling is at least worth considering, but
-                # never automatic — the measured evidence is against it.
+                # never automatic - the measured evidence is against it.
                 pass
             detections = self._tiled(bgr) if use_tiling else self._single_pass(bgr)
 

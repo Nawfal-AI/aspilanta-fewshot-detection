@@ -122,7 +122,7 @@ def verification_grid(dataset_root: str | Path, out_path: str | Path,
     for ax in axes[len(sample):]:
         ax.axis("off")
 
-    fig.suptitle(f"Generated dataset QC — {dataset_root.name} / {split}\n"
+    fig.suptitle(f"Generated dataset QC - {dataset_root.name} / {split}\n"
                  "green = Aspilanta (0), blue = distractor (1)", fontsize=10)
     fig.tight_layout()
     out_path = Path(out_path)
