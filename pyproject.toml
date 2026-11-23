@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aspilanta-fewshot-detection"
+version = "1.0.0"
+description = "Few-shot detection of Aspilanta on yellow sticky traps: synthetic compositing, staged transfer learning, and a CLIP few-shot filter"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Nawfal Abdul Malick", email = "nawfal.abdulmalick@usi.ch" }]
+keywords = ["object-detection", "few-shot-learning", "precision-agriculture",
+            "synthetic-data", "yolo", "pest-monitoring"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Scientific/Engineering :: Image Recognition",
+]
+
+dependencies = [
+  "ultralytics>=8.1.0",
+  "torch>=2.0.0",
+  "torchvision>=0.15.0",
+  "opencv-python>=4.8.0",
+  "numpy>=1.24.0",
+  "pandas>=2.0.0",
+  "matplotlib>=3.7.0",
+  "scipy>=1.11.0",
+  "scikit-learn>=1.3.0",
+  "Pillow>=10.0.0",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+clip = ["transformers>=4.35.0"]
+cutouts = ["rembg==2.0.57", "onnxruntime>=1.18.0", "pymatting>=1.1.8",
+           "opencv-contrib-python>=4.8.0"]
+viz = ["supervision>=0.18.0", "tabulate>=0.9.0"]
+dev = ["pytest>=7.4.0", "ruff>=0.1.0", "nbstripout>=0.6.0"]
+all = ["aspilanta-fewshot-detection[clip,cutouts,viz,dev]"]
+
+[project.urls]
+Repository = "https://github.com/Nawfal-AI/aspilanta-fewshot-detection"
+Homepage = "https://github.com/Nawfal-AI/aspilanta-fewshot-detection"
+"Bug Tracker" = "https://github.com/Nawfal-AI/aspilanta-fewshot-detection/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 95
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501", "B008"]

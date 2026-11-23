@@ -1,0 +1,15 @@
+# Treat notebooks as text so GitHub renders diffs, but suppress them from
+# language statistics — this is a Python project, not a notebook project.
+*.ipynb linguist-documentation
+*.ipynb text
+
+# LaTeX — suppress thesis source from language stats so Python dominates
+*.tex text diff=tex
+*.tex linguist-documentation
+*.bib linguist-documentation
+thesis/ linguist-documentation
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.pt binary

@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software or its findings, please cite this repository."
+title: "Few-Shot Detection of Aspilanta on Yellow Sticky Traps"
+version: "1.0.0"
+date-released: "2026-10-12"
+authors:
+  - family-names: "Abdul Malick"
+    given-names: "Nawfal"
+    email: "nawfal.abdulmalick@usi.ch"
+type: software
+license: MIT
+repository-code: "https://github.com/Nawfal-AI/aspilanta-fewshot-detection"
+url: "https://github.com/Nawfal-AI/aspilanta-fewshot-detection"
+abstract: >-
+  A few-shot object detection pipeline for rare agricultural pests, combining
+  copy-paste synthetic compositing, staged YOLOv8s transfer learning, and a
+  frozen-CLIP prototype filter. Trained from 44 real target cutouts.
+  Achieves AP@50 = 0.981 on the target-domain validation set.
+keywords:
+  - few-shot object detection
+  - synthetic data
+  - precision agriculture
+  - pest monitoring
+  - YOLOv8
+  - CLIP
+  - computer vision

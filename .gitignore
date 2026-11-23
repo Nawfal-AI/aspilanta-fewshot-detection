@@ -1,0 +1,57 @@
+# Data and model artefacts — regenerate these, do not commit them.
+/work/
+/data/
+/runs/
+/outputs/
+/thesis_results/
+/cutouts/
+/generated_dataset*/
+/yolo_dataset/
+/exp*_dataset/
+/target_domain_*/
+/ablation_*_dataset/
+*.pt
+*.onnx
+*.tflite
+*.engine
+yolov8*.pt
+
+# Predictions
+/predictions/
+/field_predictions/
+*_annotated.jpg
+*_detections.csv
+*_summary.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# LaTeX build products
+thesis/*.aux
+thesis/*.log
+thesis/*.out
+thesis/*.toc
+thesis/*.bbl
+thesis/*.blg
+thesis/*.synctex.gz
+thesis/*.fls
+thesis/*.fdb_latexmk
+
+# OS
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# The written thesis stays private: never commit it.
+/thesis/

@@ -1,0 +1,42 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false          # let every Python version finish independently
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install lint tools and the light test dependencies
+        # Deliberately NOT the full package: torch, CUDA and Ultralytics are
+        # several GB and none of the unit tests need them. These are the only
+        # third-party modules the tests import:
+        #   numpy                    metrics, tiling, compositing tests
+        #   pyyaml                   config loading, dataset YAML round-trip
+        #   opencv-python-headless   aspilanta.synthetic imports cv2 on load
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff pytest numpy pyyaml opencv-python-headless
+
+      - name: Install the package itself (no dependencies)
+        run: pip install --no-deps -e .
+
+      - name: Lint
+        run: ruff check src scripts tests
+
+      - name: Test
+        run: pytest tests/ -q
+
+      - name: Check the package imports
+        run: python -c "import aspilanta; print(aspilanta.__version__)"

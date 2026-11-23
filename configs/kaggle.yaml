@@ -1,0 +1,25 @@
+# Kaggle session overlay.
+#
+# Kaggle wipes /kaggle/working on session timeout, so anything you want to keep
+# must be saved to an output dataset before the session ends. The twelve-hour
+# limit also means the nine-ablation sweep will not finish in one go — that is
+# why run_ablations.py reuses completed runs by default.
+
+paths:
+  work: /kaggle/working
+  inputs: /kaggle/input
+
+  # Adjust these slugs to match your own attached datasets.
+  aspilanta_raw: /kaggle/input/aspilanta-raw
+  distractor_raw: /kaggle/input/distractor-insects
+  backgrounds: /kaggle/input/trap-backgrounds
+  real_aspilanta_yolo: /kaggle/input/real-aspilanta
+
+base_training:
+  # Kaggle's shared filesystem makes many dataloader workers counterproductive.
+  workers: 2
+  batch: 16
+
+solution:
+  workers: 2
+  batch: 16

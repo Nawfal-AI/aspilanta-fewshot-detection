@@ -1,0 +1,84 @@
+# Default configuration. Every value here reproduces the reported results.
+# Copy this file, change what you need, and pass it with --config.
+#
+# Only the keys you want to change need to appear; anything omitted falls back
+# to the dataclass defaults in src/aspilanta/config.py.
+
+paths:
+  # Writable scratch space for datasets, training runs and results.
+  work: work
+  # Read-only location of the raw source datasets.
+  inputs: data
+
+  # Point these at your own copies. None of them are redistributed with the
+  # repository except the Yellow Sticky Traps dataset, which is public.
+  yellow_sticky_traps: data/yellow-sticky-traps-dataset
+  aspilanta_raw: data/aspilanta_raw
+  distractor_raw: data/distractor_raw
+  backgrounds: data/backgrounds
+  real_aspilanta_yolo: data/real_aspilanta
+
+classes:
+  base: [MP, NT, WF]
+  full: [MP, NT, WF, Aspilanta]
+  target_id: 3
+
+random_seed: 42
+real_val_ratio: 0.20
+synth_val_ratio: 0.20
+# null = use every real image available. Set to 5 or 10 for a strict
+# few-shot ablation.
+k_real_shots: null
+
+base_training:
+  model: yolov8s.pt
+  epochs: 50
+  imgsz: 640
+  batch: 16
+  lr0: 0.01
+  patience: 10
+  run_name: exp1_base_3class
+
+solution:
+  epochs: 80
+  imgsz: 640
+  batch: 16
+  lr0: 0.005
+  patience: 15
+  # 0 = backbone trainable. This is the proposed setting and it contradicts
+  # standard few-shot practice; see docs/results.md for the evidence.
+  # Set to 10 to reproduce the frozen ablation.
+  freeze: 0
+  copy_paste: 0.3
+  cos_lr: true
+  close_mosaic: 15
+  label_smoothing: 0.05
+  run_name: solution_4class_detector
+
+generator:
+  num_images: 2000
+  train_ratio: 0.85
+  seed: 42
+  # Physical scale calibration. Insect length is drawn in millimetres and
+  # converted to pixels via the detected pad width, so composites stay
+  # scale-correct across background resolutions.
+  insect_mean_mm: 5.0
+  insect_std_mm: 0.8
+  insect_min_mm: 2.5
+  insect_max_mm: 8.0
+  pad_width_mm: 140.0
+  # Compositing switches. The Section 6.2 ablations flip these.
+  use_poisson: true
+  use_distractors: true
+  use_pad_aware: true
+
+deployment:
+  conf: 0.25
+  iou: 0.45
+  deploy_conf: 0.40
+  # Both off on measured evidence — see docs/results.md.
+  # Tiling: F1 0.023 vs 0.861 single-pass.
+  # Blanket CLIP filtering: F1 0.785 vs 0.861.
+  use_tiling: false
+  use_clip_filter: false
+  selective_trust_threshold: 0.60

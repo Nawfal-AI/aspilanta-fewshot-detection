@@ -1,0 +1,22 @@
+# Small local run without a GPU — for verifying the pipeline works end to end
+# before committing GPU time. The numbers this produces are not meaningful.
+
+paths:
+  work: work
+  inputs: data
+
+base_training:
+  epochs: 3
+  batch: 4
+  imgsz: 320
+  workers: 0
+
+solution:
+  epochs: 3
+  batch: 4
+  imgsz: 320
+  workers: 0
+
+generator:
+  # 40 images instead of 2,000. Enough to exercise every compositing path.
+  num_images: 40
