@@ -13,7 +13,7 @@ cluttered trap-card images the detector must work on at deployment. So there
 are two gaps, not one:
 
 1. **Quantity.** 44 examples against the thousands a detector expects.
-2. **Domain.** The examples that exist look nothing like the deployment input -
+2. **Domain.** The examples that exist look nothing like the deployment input:
    a 5 mm moth among dozens of other insects on a glossy adhesive card.
 
 The second gap is the harder one. Collecting a few hundred more specimen
@@ -29,7 +29,7 @@ of them solves this problem alone:
 - **Data-oriented** methods manufacture labelled examples. They produce images,
   not a detector.
 - **Model-oriented** methods use scarce labels more efficiently through
-  transfer learning. Efficiency is not creation - with 44 examples there is
+  transfer learning. Efficiency is not creation: with 44 examples there is
   not enough to be efficient with.
 - **Algorithm-oriented** methods classify from a handful of references and do
   it well. But they classify *regions*; they cannot find them in a full image.
@@ -42,7 +42,7 @@ others' gap.
 ## 1. Data-oriented: copy-paste compositing
 
 The generator turns 44 cutouts into 2,000 trap images containing 9,211
-labelled instances. Naive alpha compositing would not work - a detector
+labelled instances. Naive alpha compositing would not work: a detector
 trained on obvious paste seams learns the seams. Six things make the output
 usable.
 
@@ -57,7 +57,7 @@ adhesive pad, not anywhere on the photograph. This turned out to be the
 single largest compositing effect in the ablations (−0.269 AP@50 when removed).
 
 **Pad cleaning.** Background photographs are real trap cards, so most already
-carry insects. Left in, those become unlabelled positives - objects with no
+carry insects. Left in, those become unlabelled positives: objects with no
 ground-truth box, teaching the detector to suppress exactly what it should
 find. They are detected as small dark blobs against the smooth pad and
 inpainted away.
@@ -69,11 +69,11 @@ differently.
 
 **Per-instance appearance variation.** Colour jitter, local lighting match,
 contact shadow, occasional motion blur. Without these, every instance descends
-from one of 44 cutouts and shares its colour statistics - a shortcut cue.
+from one of 44 cutouts and shares its colour statistics, a shortcut cue.
 
 **Distractors.** European moth species composited alongside the target, so the
 detector must discriminate rather than just detect "an insect". (The ablation
-did not support this one - see `results.md`.)
+did not support this one; see `results.md`.)
 
 Labels are validated before writing: a box that has drifted off-frame or
 collapsed to a sliver is rejected and counted, rather than becoming quiet
@@ -85,8 +85,8 @@ YOLOv8s, in two stages.
 
 **Stage 1** trains on the three data-rich classes of the Yellow Sticky Traps
 dataset (MP, NT, WF) from ImageNet initialisation. *Aspilanta* is absent
-entirely. This teaches the network the visual domain - small insects on
-adhesive cards - using real photographs and real labels.
+entirely. This teaches the network the visual domain: small insects on
+adhesive cards, using real photographs and real labels.
 
 **Stage 2** fine-tunes to four classes on the original data plus real and
 synthetic *Aspilanta*, **with the backbone trainable**.
@@ -94,7 +94,7 @@ synthetic *Aspilanta*, **with the backbone trainable**.
 That last choice contradicts standard practice and contradicted this project's
 own original design. Freezing the backbone is the usual defence against
 few-shot overfitting, but by the time stage 2 begins the generator has already
-supplied 2,000 images and 9,211 instances - the scarcity the freeze protects
+supplied 2,000 images and 9,211 instances; the scarcity the freeze protects
 against no longer exists. The ablation confirmed it on both validation sets and
 the method changed accordingly.
 
@@ -126,7 +126,7 @@ context, but they are not drawn or counted: the deployment task is an
 *Aspilanta* count.
 
 Tiled inference is implemented and off. On this data it scores F1 0.023 against
-0.861 for single-pass - the detector was trained on whole images resized to
+0.861 for single-pass: the detector was trained on whole images resized to
 640 px, so a native-resolution 640 px crop presents insects at a scale it has
 never seen. The code is kept because the failure is a clean illustration of
 train/inference domain mismatch, and because the motivation is sound for
@@ -139,9 +139,9 @@ pixels. Re-measure before trusting it on your own data.
 
 Three experiments on one common validation set, so the numbers are comparable:
 
-1. **Base detector** on the three-class split - establishes the domain is
+1. **Base detector** on the three-class split, establishing the domain is
    learnable at all.
-2. **Zero-shot diagnostic** - the three-class model run over trap images that
+2. **Zero-shot diagnostic**: the three-class model run over trap images that
    contain *Aspilanta*. It has no output for the class, so every detection is
    wrong by construction. This is the control that makes the domain gap a
    measurement rather than an assumption.
@@ -159,5 +159,5 @@ the pipeline beats the obvious alternatives, not just nothing.
 Finally, a decision-held-out test split. The proposed configuration was chosen
 partly by reading ablation numbers off the validation set, which means that set
 can no longer support an unbiased final claim. The split is stratified on
-provenance so both halves keep the same real/synthetic mix - with only eleven
+provenance so both halves keep the same real/synthetic mix, with only eleven
 real photographs, an unstratified draw could put nearly all of them on one side.
